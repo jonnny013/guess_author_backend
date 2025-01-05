@@ -1,35 +1,7 @@
 import { Sequelize } from 'sequelize'
-import 'dotenv/config'
-
-const migrationsConfig = {
-  migrationStorage: 'sequelize',
-  migrationStorageTableName: 'migrations',
-}
-
-const db_config = {
-  development: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    dialect: 'postgres',
-    url: process.env.DATABASE_URL,
-    ...migrationsConfig,
-  },
-  production: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    dialect: 'postgres',
-    db_url: process.env.DATABASE_URL,
-    ...migrationsConfig,
-  },
-}
 
 const env = process.env.NODE_ENV || 'development'
+import  db_config  from '../config/db.cjs'
 
 const config = db_config[env]
 

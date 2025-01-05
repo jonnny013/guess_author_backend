@@ -8,7 +8,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "proxy": "fly proxy 5432 -a guess-author-db",
-    "migrations": "npx sequelize-cli db:migrate --config src/db/db.js",
+    "migrations": "npx sequelize-cli db:migrate --config src/config/db.cjs",
     "newmigration": "npx sequelize-cli migration:generate --name"
   },
   "author": "Jon love",
