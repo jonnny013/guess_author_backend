@@ -6,7 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "proxy": "fly proxy 5432 -a guess-author-db"
+    "proxy": "fly proxy 5432 -a guess-author-db",
+    "migrations": "npx sequelize-cli db:migrate --config src/db/db.js",
+    "newmigration": "npx sequelize-cli migration:generate --name"
   },
   "author": "Jon love",
   "license": "ISC",
