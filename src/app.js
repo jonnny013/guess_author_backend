@@ -1,12 +1,24 @@
-import app from './src/app'
-import { connectToDatabase } from './src/db/db'
+import express from 'express'
+import cors from 'cors'
 
-const PORT = process.env.PORT || 3001
+import sessionsRouter from './controllers/sessions'
+import gamesRouter from './controllers/games'
+import answersRouter from './controllers/answers'
 
-const start = async () => {
-  await connectToDatabase()
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`)
+const app = express()
+
+app.set('trust proxy', 1)
+app.use(express.json())
+app.use(
+  cors({
+    credentials: true,
+    methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+    origin: true,
   })
-}
-void start()
+)
+
+app.use('api/v1/games', gamesRouter)
+app.use('api/v1/answers', answersRouter)
+app.use('api/v1/sessions', sessionsRouter)
+
+export default app
