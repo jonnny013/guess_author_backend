@@ -1,5 +1,5 @@
 import express from 'express'
-import { Answers } from '../utils/answerParser'
+import { Answers } from '../utils/answerParser.js'
 
 const answersRouter = express.Router()
 
@@ -12,3 +12,5 @@ answersRouter.post('/', async (req, res) => {
     res.status(400).json(err)
   }
 })
+
+export default answersRouter

@@ -13,7 +13,7 @@ const db_config = {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     dialect: 'postgres',
-    url: process.env.DEV_DB_URL,
+    url: process.env.DATABASE_URL,
     ...migrationsConfig,
   },
   production: {
@@ -23,7 +23,7 @@ const db_config = {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     dialect: 'postgres',
-    db_url: process.env.DB_URL,
+    db_url: process.env.DATABASE_URL,
     ...migrationsConfig,
   },
 }

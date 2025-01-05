@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import getErrName from './parsingError'
+import getErrName from './parsingError.js'
 
 export const Answers = z.object({
   name: z.string(getErrName('name')),

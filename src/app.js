@@ -1,9 +1,9 @@
 import express from 'express'
 import cors from 'cors'
 
-import sessionsRouter from './controllers/sessions'
-import gamesRouter from './controllers/games'
-import answersRouter from './controllers/answers'
+import sessionsRouter from './controllers/sessions.js'
+import gamesRouter from './controllers/games.js'
+import answersRouter from './controllers/answers.js'
 
 const app = express()
 
