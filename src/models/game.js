@@ -34,6 +34,7 @@ Game.init(
     sequelize,
     underscored: false,
     modelName: 'games',
+    timestamps: false
   }
 )
 export default Game

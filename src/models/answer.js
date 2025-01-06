@@ -28,6 +28,7 @@ Answer.init(
     sequelize,
     underscored: false,
     modelName: 'answers',
+    timestamps: false,
   }
 )
 export default Answer

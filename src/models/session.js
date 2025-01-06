@@ -13,19 +13,21 @@ Session.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    created_at: {
+    createdAt: {
       type: DataTypes.DATE,
       defaultValue: literal('CURRENT_TIMESTAMP'),
+      field: 'created_at', 
     },
-    updated_at: {
+    updatedAt: {
       type: DataTypes.DATE,
       defaultValue: literal('CURRENT_TIMESTAMP'),
+      field: 'updated_at',
     },
   },
   {
     sequelize,
-    underscored: false,
     modelName: 'sessions',
+    timestamps: true,
   }
 )
 export default Session
