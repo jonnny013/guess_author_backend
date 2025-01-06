@@ -1,6 +1,6 @@
-import Session from './session'
-import Answer from './answer'
-import Game from './game'
+import Session from './session.js'
+import Answer from './answer.js'
+import Game from './game.js'
 
 Session.hasMany(Answer, { foreignKey: 'session_id', onDelete: 'CASCADE' })
 Answer.belongsTo(Session, { foreignKey: 'session_id', onDelete: 'CASCADE' })

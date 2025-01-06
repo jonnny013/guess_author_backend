@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize'
-
+import { sequelize } from '../db/db.js'
 class Answer extends Model {}
 
 Answer.init(
