@@ -1,8 +1,8 @@
 import { z } from 'zod'
 import getErrName from './parsingError.js'
 
-export const Answers = z.object({
+export const AnswersParser = z.object({
   name: z.string(getErrName('name')),
-  session: z.string(getErrName('session')),
+  sessionId: z.number(getErrName('session')),
   answer: z.string(getErrName('answer')),
 })

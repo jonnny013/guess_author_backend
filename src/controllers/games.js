@@ -1,11 +1,11 @@
 import express from 'express'
-import { Answers } from '../utils/answerParser.js'
+import { GamesParser } from '../utils/gamesParser.js'
 
 const gamesRouter = express.Router()
 
 gamesRouter.post('/', async (req, res) => {
   try {
-    const parsedData = Answers.parse(req.body)
+    const parsedData = GamesParser.parse(req.body)
     //save to Database
     res.status(201).json(parsedData)
   } catch (err) {

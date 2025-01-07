@@ -13,17 +13,17 @@ Game.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    is_correct: {
+    isCorrect: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
-    session_id: {
+    sessionId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: 'sessions', key: 'id' },
       onDelete: 'CASCADE',
     },
-    answer_id: {
+    answerId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: 'answers', key: 'id' },
@@ -32,9 +32,9 @@ Game.init(
   },
   {
     sequelize,
-    underscored: false,
+    underscored: true,
     modelName: 'games',
-    timestamps: false
+    timestamps: false,
   }
 )
 export default Game

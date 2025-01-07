@@ -17,7 +17,7 @@ Answer.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    session_id: {
+    sessionId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: 'sessions', key: 'id' },
@@ -26,7 +26,7 @@ Answer.init(
   },
   {
     sequelize,
-    underscored: false,
+    underscored: true,
     modelName: 'answers',
     timestamps: false,
   }
