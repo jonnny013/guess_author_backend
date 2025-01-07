@@ -23,6 +23,10 @@ Answer.init(
       references: { model: 'sessions', key: 'id' },
       onDelete: 'CASCADE',
     },
+    status: {
+      type: DataTypes.TEXT,
+      defaultValue: 'available',
+    },
   },
   {
     sequelize,

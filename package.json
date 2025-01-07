@@ -9,7 +9,8 @@
     "dev": "nodemon index.js",
     "proxy": "fly proxy 5432 -a guess-author-db",
     "migrations": "npx sequelize-cli db:migrate --config src/config/db.cjs",
-    "newmigration": "npx sequelize-cli migration:generate --name"
+    "newmigration": "npx sequelize-cli migration:generate --name",
+    "psql": "fly postgres connect -a guess-author-db"
   },
   "author": "Jon love",
   "license": "ISC",
