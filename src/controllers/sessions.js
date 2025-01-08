@@ -10,6 +10,7 @@ sessionsRouter.post('/', async (req, res) => {
     const newItem = await Session.create(parsedData)
     res.status(201).json({ id: newItem.id })
   } catch (err) {
+    console.log('ERROR AT sessions router post \n', err)
     res.status(400).json(err)
   }
 })
@@ -20,6 +21,7 @@ sessionsRouter.get('/:id', async (req, res) => {
     const newItem = await Session.findByPk(id)
     res.status(201).json(newItem)
   } catch (err) {
+    console.log('ERROR AT sessions router get/id \n', err)
     res.status(400).json(err)
   }
 })
