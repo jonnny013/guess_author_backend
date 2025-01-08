@@ -38,19 +38,45 @@ answersRouter.get('/random/:id', async (req, res) => {
     const randomItem = await Answer.findOne({
       where: { status: 'available', sessionId: id },
       order: sequelize.literal('RANDOM()'),
-      lock: transaction.LOCK.UPDATE,
+      lock: sequelize.literal('FOR UPDATE SKIP LOCKED'),
       transaction,
     })
-    if (!randomItem) {
-      res.status(400).json('No items available')
+    console.log("random item initial",randomItem.answer)
+
+    if (randomItem) {
+      await randomItem.update({ status: 'chosen' }, { transaction })
+      await transaction.commit()
+      console.log('Old item used', randomItem.answer)
+      res.status(200).json({ names, question: randomItem })
+      return
+    } else {
+      const itemToCopy = await Answer.findOne({
+        where: { sessionId: id },
+        order: sequelize.literal('RANDOM()'),
+        transaction,
+      })
+
+      if (!itemToCopy) {
+        await transaction.rollback()
+        res.status(404).json({ message: 'No items found to copy.' })
+        return
+      }
+      const newRandomItem = await Answer.create(
+        {
+          ...itemToCopy.toJSON(),
+          status: 'available',
+          id: undefined,
+        },
+        { transaction }
+      )
+      console.log('New random item made', newRandomItem.answer)
+      await transaction.commit()
+      res.status(200).json({ names, question: newRandomItem })
       return
     }
-    await randomItem.update({ status: 'chosen' }, { transaction })
-    await transaction.commit()
-
-    res.status(200).json({ names, question: randomItem })
   } catch (err) {
     console.error(err)
+    await transaction.rollback()
     res.status(400).json(err)
   }
 })

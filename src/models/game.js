@@ -13,6 +13,10 @@ Game.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    chosenName: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
     isCorrect: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

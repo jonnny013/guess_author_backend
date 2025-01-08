@@ -6,4 +6,5 @@ export const GamesParser = z.object({
   sessionId: z.number(getErrName('session')),
   answerId: z.number(getErrName('answer')),
   isCorrect: z.boolean(getErrName('isCorrect')),
+  chosenName: z.string(getErrName('chosen Name')),
 })

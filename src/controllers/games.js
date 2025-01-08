@@ -32,10 +32,10 @@ gamesRouter.get('/:id', async (req, res) => {
         'isCorrect',
         'name',
         [sequelize.col('answer.answer'), 'guessedAnswer'],
-        [sequelize.col('answer.name'), 'guessedName'],
+        [sequelize.col('answer.name'), 'correctName'],
+        'chosenName'
       ],
     })
-    console.log(list)
     res.status(201).json(list)
   } catch (err) {
     console.log(err)
